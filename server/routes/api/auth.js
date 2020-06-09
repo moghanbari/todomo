@@ -11,6 +11,42 @@ const { JWT_SECRET } = config
 const router = Router()
 
 /**
+ * @route   POST api/auth/login
+ * @desc    Login a user
+ * @access  Public
+ */
+router.post('/login', async (request, response) => {
+  const { email, password } = request.body
+
+  // Simple validation
+  if (!email || !password) {
+    return response.status(400).json({ msg: 'Please enter all fields' })
+  }
+
+  try {
+    const user = await User.findOne({ email })
+    if (!user) throw Error('User does not exist')
+
+    const isMatch = await bycrypt.compare(password, user.password)
+    if (!isMatch) throw Error('Invalid credentials')
+
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: 3600 })
+    if (!token) throw Error('Couldnt sign the token')
+
+    response.status(200).json({
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    })
+  } catch (error) {
+    response.status(400).json({ msg: error.message })
+  }
+})
+
+/**
  * @route   POST api/auth/register
  * @desc    Register new user
  * @access  Public
