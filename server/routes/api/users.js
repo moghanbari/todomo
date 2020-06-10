@@ -14,7 +14,7 @@ router.get('/', async (request, response) => {
     if (!users) response.status(400).json({ msg: 'No users exists' })
     response.json(users)
   } catch (error) {
-    throw Error(error.message)
+    response.status(400).json({ msg: error.message })
   }
 })
 

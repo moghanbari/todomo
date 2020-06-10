@@ -1,12 +1,15 @@
-const router = require('express').Router()
-const Todo = require('../../models/todo')
+import { Router } from 'express'
+import Todo from '../../models/todo'
+import auth from '../../middleware/auth'
+
+const router = Router()
 
 /**
  * @route   PORT api/todos
  * @desc    Create a new todo item
  * @access  Private
  */
-router.post('/', (request, response) => {
+router.post('/', auth, async (request, response) => {
   const { text, user_id } = request.body
 
   // validation
@@ -30,4 +33,18 @@ router.post('/', (request, response) => {
   })
 })
 
-module.exports = router
+/**
+ * @route   GET api/todos
+ * @desc    Get all todos for current user
+ * @access  Private
+ */
+router.get('/', auth, async (request, response) => {
+  try {
+    const todos = await Todo.find({ user_id: request.user.id })
+    response.json(todos)
+  } catch (error) {
+    response.status(400).json({ msg: error.message })
+  }
+})
+
+export default router
