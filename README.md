@@ -1,10 +1,10 @@
 # todomo
 A todo application with registration and authentication ability.
 
-Technologies:
-#####Backend:
+### Technologies:
+##### Backend:
 * NodeJS using express framework
-#####FrontEnd:
+##### FrontEnd:
 * React and Redux
-#####Database:
+##### Database:
 * MongoDB
