@@ -5,12 +5,14 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 const { check, validationResult } = require('express-validator')
 
+const auth = require('../../middleware/auth')
+
 const User = require('../../models/User')
 
 const JWTSecret = config.get('JWTSecret')
 
 /**
- * @route   POST api/users
+ * @route   POST api/user
  * @desc    Create/Register a user
  * @access  Public
  */
@@ -35,7 +37,7 @@ router.post(
     try {
       // See if user exists
       const user = await User.findOne({ email })
-      if (user) throw Error('User already existed')
+      if (user) res.status(401).json({ msg: 'User already existed' })
 
       // Encrypt password
       const salt = await bcrypt.genSalt(10)
@@ -66,6 +68,57 @@ router.post(
       })
     } catch (error) {
       response.status(400).json({ errors: [{ msg: error.message }] })
+    }
+  }
+)
+
+/**
+ * @route   PUT api/user
+ * @desc    Update a user
+ * @access  Private
+ */
+router.put(
+  '/',
+  [
+    auth,
+    check('name', 'Name is required').not().isEmpty(),
+    check(
+      'password',
+      'Please enter a password with 6 or more characters'
+    ).isLength({ min: 6 }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+
+    try {
+      const user = await User.findById(req.user.id)
+      if (!user) res.status(404).json({ msg: 'User not found' })
+
+      const { name, password } = req.body
+
+      // Encrypt password
+      const salt = await bcrypt.genSalt(10)
+      if (!salt) throw Error('Salt creation went wrong!')
+
+      const hashedPassword = await bcrypt.hash(password, salt)
+      if (!hashedPassword) throw Error("Couldn't hash the password")
+
+      const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        {
+          name,
+          hashedPassword,
+        },
+        { new: true }
+      ).select('-password')
+
+      res.json(updatedUser)
+    } catch (err) {
+      console.log(err.message)
+      res.status(500).send('Server Error')
     }
   }
 )
