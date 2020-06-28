@@ -5,7 +5,7 @@ import Alert from './components/layouts/Alert'
 import Landing from './components/pages/Landing'
 import Register from './components/pages/Register'
 import Login from './components/pages/Login'
-import Todos from './components/todo/Todos'
+import Todos from './components/pages/Todos'
 
 // Redux
 import { Provider } from 'react-redux'
