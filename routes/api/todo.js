@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
     const user = await User.findById(req.user.id)
     if (!user) res.status(401).json({ msg: 'User not found' })
 
-    const todos = await Todo.find({ user: req.user.id })
+    const todos = await Todo.find({ user: req.user.id }).sort('-date')
 
     res.json(todos)
   } catch (err) {
