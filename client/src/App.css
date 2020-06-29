@@ -1,3 +1,10 @@
-.todos .completed {
+.todos .completed input[type='text'] {
   text-decoration: line-through;
+  pointer-events: none;
+}
+
+.todos-list .todo-item input[type='text'],
+.todos-list .todo-item input[type='text']:focus {
+  border: 0;
+  outline: 0;
 }

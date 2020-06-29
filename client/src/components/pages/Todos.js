@@ -14,9 +14,11 @@ function Todos({ getTodos, todo: { todos, loading } }) {
     <div className="todos">
       <h1>Todos</h1>
       <AddTodo />
-      {todos.map((todo) => (
-        <TodoItem key={todo._id} todo={todo} />
-      ))}
+      <div className="todos-list">
+        {todos.map((todo) => (
+          <TodoItem key={todo._id} todo={todo} />
+        ))}
+      </div>
     </div>
   )
 }
