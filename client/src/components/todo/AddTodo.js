@@ -13,7 +13,10 @@ function AddTodo({ addTodo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addTodo(text)
+    if (text.length > 2) {
+      addTodo(text)
+      setText('')
+    }
   }
 
   return (

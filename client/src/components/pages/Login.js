@@ -27,35 +27,31 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <section className="login container">
       <h1>Login</h1>
       <form onSubmit={(e) => onSubmit(e)}>
-        <div>
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <input type="submit" value="Login" />
+        <input
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          value={email}
+          required
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={password}
+          required
+          onChange={(e) => onChange(e)}
+        />
+        <input type="submit" className="button login" value="Login" />
       </form>
       <p>
         Don't have an account? <Link to="/register">Register</Link>
       </p>
-    </Fragment>
+    </section>
   )
 }
 

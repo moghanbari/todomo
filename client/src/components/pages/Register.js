@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { setAlert } from '../../redux/actions/alert'
@@ -34,60 +34,55 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <section className="register container">
       <h1>Sign Up</h1>
-      <p>
-        <i></i> Create Your Account
-      </p>
       <form onSubmit={(e) => onSubmit(e)}>
-        <div>
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={name}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="6"
-            value={password}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            minLength="6"
-            value={password2}
-            required
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <input type="submit" value="Register" />
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={name}
+          required
+          onChange={(e) => onChange(e)}
+        />
+
+        <input
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          value={email}
+          required
+          onChange={(e) => onChange(e)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          minLength="6"
+          value={password}
+          required
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          name="password2"
+          minLength="6"
+          value={password2}
+          required
+          onChange={(e) => onChange(e)}
+        />
+        <input type="submit" className="button register" value="Register" />
+        <p className="license-agreement">
+          By signing up you accept our license agreement. You can find it here.
+          Please fully read it before signing up.
+        </p>
       </form>
       <p>
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
-    </Fragment>
+    </section>
   )
 }
 

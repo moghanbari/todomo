@@ -9,7 +9,8 @@ import store from './redux/store'
 import { loadUser } from './redux/actions/auth'
 import Routes from './components/routing/Routes'
 
-import './App.css'
+import './assets/css/reset.css'
+import './assets/css/style.css'
 
 const App = () => {
   useEffect(() => {

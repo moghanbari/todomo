@@ -1,0 +1,139 @@
+body {
+  font-family: calibri;
+  background: #fafafa;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.todos .completed input[type='text'] {
+  text-decoration: line-through;
+  pointer-events: none;
+}
+.todos-list .todo-item input[type='text'],
+.todos-list .todo-item input[type='text']:focus {
+  border: 0;
+  outline: 0;
+}
+
+.button {
+  text-decoration: none;
+  background: #5098a7;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: inline-block;
+
+  color: #fff;
+  border: 1px solid #616161;
+  box-shadow: 3px 2px 0px #c8c8c8;
+}
+
+/* Landing */
+.landing.container {
+  padding-top: 35px;
+}
+.landing .two-column-wrapper {
+  display: grid;
+  grid-template-columns: 55% 45%;
+}
+
+.landing .two-column-wrapper h1,
+.landing .two-column-wrapper h2 {
+  font-size: 60px;
+  font-family: calibri;
+  font-weight: 500;
+  line-height: 58px;
+}
+.landing .two-column-wrapper h2 {
+  margin-bottom: 18px;
+  font-weight: 700;
+  padding: 10px 0;
+}
+.landing .two-column-wrapper h1 {
+  font-weight: 700;
+  font-size: 35px;
+  color: #5098a7;
+}
+.landing .two-column-wrapper p {
+  line-height: 28px;
+}
+.landing .col2 {
+  padding-top: 95px;
+}
+.button.get-started {
+  margin-top: 20px;
+}
+.landing-image {
+  padding-top: 75px;
+  text-align: center;
+}
+.landing-image img {
+  width: 400px;
+}
+
+/* Navbar */
+.navbar .logo {
+  width: 127px;
+}
+.navbar ul li {
+  float: left;
+}
+.navbar ul li a {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #616161;
+  font-weight: 200;
+  font-size: 18px;
+}
+.navbar ul {
+  float: right;
+}
+nav.navbar.container {
+  margin-top: 25px;
+}
+
+/* Register & Login */
+.register.container,
+.login.container {
+  padding: 30px 30px;
+  width: 320px;
+  background: #fff;
+  margin-top: 100px;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+}
+.register.container h1,
+.login.container h1 {
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+.register.container input[type='text'],
+.register.container input[type='email'],
+.register.container input[type='password'],
+.login.container input[type='text'],
+.login.container input[type='email'],
+.login.container input[type='password'] {
+  display: block;
+  width: 93%;
+  border-radius: 4px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #a7a7a7;
+}
+.register.container p,
+.login.container p {
+  margin-top: 30px;
+  color: #616161;
+  font-weight: 200;
+}
+.button.register,
+.button.login {
+  margin-top: 10px;
+}
+.register.container .licence-agreement {
+  font-size: 12px;
+  line-height: 17px;
+  margin-top: 20px;
+}
