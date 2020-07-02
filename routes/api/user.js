@@ -144,7 +144,7 @@ router.put(
       const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
         {
-          hashedPassword,
+          password: hashedPassword,
         },
         { new: true }
       ).select('-password')

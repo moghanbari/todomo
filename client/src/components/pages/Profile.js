@@ -3,14 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { updateUser, updatePassword } from '../../redux/actions/user'
 
-function Profile({ updateUser, updatePassword }) {
+function Profile({ updateUser, updatePassword, user }) {
   const [formData, setFormData] = useState({
-    name: '',
+    name: user.name,
+    email: user.email,
     newPassword: '',
     repeatNewPassword: '',
   })
 
-  const { name, newPassword, repeatNewPassword } = formData
+  const { name, email, newPassword, repeatNewPassword } = formData
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -26,11 +27,7 @@ function Profile({ updateUser, updatePassword }) {
   const handleSubmitUpdatePasswordForm = (e) => {
     e.preventDefault()
 
-    if (newPassword === repeatNewPassword) {
-      updatePassword(newPassword)
-    } else {
-      // Alert here
-    }
+    updatePassword(newPassword)
   }
 
   return (
@@ -49,13 +46,20 @@ function Profile({ updateUser, updatePassword }) {
               name="name"
               id="name"
               required
+              value={name}
             />
           </div>
           <div className="col1">
             <label htmlFor="email">Email:</label>
           </div>
           <div className="col2">
-            <input className="input-field" type="email" disabled id="email" />
+            <input
+              className="input-field"
+              type="email"
+              disabled
+              id="email"
+              value={email}
+            />
           </div>
         </div>
         <input className="button" type="submit" value="Update" />
@@ -101,6 +105,14 @@ function Profile({ updateUser, updatePassword }) {
 Profile.propTypes = {
   updateUser: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
-export default connect(null, { updateUser, updatePassword })(Profile)
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+})
+
+export default connect(mapStateToProps, {
+  updateUser,
+  updatePassword,
+})(Profile)

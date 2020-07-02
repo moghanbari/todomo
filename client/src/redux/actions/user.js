@@ -28,6 +28,7 @@ export const updateUser = (name) => async (dispatch) => {
       type: UPDATE_USER,
       payload: res.data,
     })
+    dispatch(setAlert('User info updated', 'success'))
   } catch (err) {
     const errors = err.response.data.errors
 
@@ -61,6 +62,7 @@ export const updatePassword = (password) => async (dispatch) => {
       type: UPDATE_USER_PASSWORD,
       payload: res.data,
     })
+    dispatch(setAlert('New password has been set', 'success'))
   } catch (err) {
     const errors = err.response.data.errors
 

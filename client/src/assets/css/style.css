@@ -44,16 +44,21 @@ body {
 }
 
 /* Alert */
-.alert.alert-danger {
-  background: #f44336;
-  color: #fff;
+.alert {
   margin-bottom: -60px !important;
-  width: 380px;
   border-radius: 4px;
   margin-bottom: 5px;
 }
-.alert.alert-danger p {
+.alert p {
   padding: 20px 30px;
+}
+.alert-danger {
+  background: #f44336;
+  color: #fff;
+}
+.alert-success {
+  background: #4caf50;
+  color: #fff;
 }
 
 /* Landing */
