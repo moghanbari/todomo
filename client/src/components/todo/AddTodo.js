@@ -21,14 +21,22 @@ function AddTodo({ addTodo }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="text"
-        placeholder="Add Todo ..."
-        value={text}
-        onChange={handleTodoTextChange}
-      />
-      <input type="submit" value="Add Todo" className="" />
+      <div className="add-todo two-column-wrapper">
+        <div className="col1">
+          <span className="plus">+</span>
+        </div>
+        <div className="col2">
+          <input
+            className="add-todo-text input-field"
+            type="text"
+            name="text"
+            placeholder="Add Todo ..."
+            value={text}
+            onChange={handleTodoTextChange}
+          />
+          <input type="submit" value="Add Todo" className="" />
+        </div>
+      </div>
     </form>
   )
 }

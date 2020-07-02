@@ -4,6 +4,7 @@ import PrivateRoute from './PrivateRoute'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Todos from '../pages/Todos'
+import Profile from '../pages/Profile'
 import Alert from '../layouts/Alert'
 
 const Routes = () => (
@@ -13,6 +14,7 @@ const Routes = () => (
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
       <PrivateRoute exact path="/todos" component={Todos} />
+      <PrivateRoute exact path="/profile" component={Profile} />
     </Switch>
   </>
 )

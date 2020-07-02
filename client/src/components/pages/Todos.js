@@ -11,7 +11,7 @@ function Todos({ getTodos, todo: { todos, loading } }) {
   }, [getTodos])
 
   return (
-    <div className="todos">
+    <div className="todos container mt-100">
       <h1>Todos</h1>
       <AddTodo />
       <div className="todos-list">
@@ -25,7 +25,7 @@ function Todos({ getTodos, todo: { todos, loading } }) {
 
 Todos.prototype = {
   getTodos: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
+  todo: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({

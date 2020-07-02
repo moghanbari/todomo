@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Landing() {
   return (
-    <section className="landing container">
+    <section className="landing container mt-100">
       <div className="two-column-wrapper">
         <div className="col1">
           <div className="landing-image">

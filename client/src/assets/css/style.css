@@ -29,10 +29,34 @@ body {
   box-shadow: 3px 2px 0px #c8c8c8;
 }
 
-/* Landing */
-.landing.container {
-  padding-top: 35px;
+.input-field {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #a7a7a7;
+  box-sizing: border-box;
 }
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+/* Alert */
+.alert.alert-danger {
+  background: #f44336;
+  color: #fff;
+  margin-bottom: -60px !important;
+  width: 380px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+.alert.alert-danger p {
+  padding: 20px 30px;
+}
+
+/* Landing */
 .landing .two-column-wrapper {
   display: grid;
   grid-template-columns: 55% 45%;
@@ -59,13 +83,13 @@ body {
   line-height: 28px;
 }
 .landing .col2 {
-  padding-top: 95px;
+  padding-top: 75px;
 }
 .button.get-started {
   margin-top: 20px;
 }
 .landing-image {
-  padding-top: 75px;
+  padding-top: 45px;
   text-align: center;
 }
 .landing-image img {
@@ -102,25 +126,13 @@ nav.navbar.container {
   margin-top: 100px;
   border-radius: 8px;
   border: 1px solid #ededed;
+  box-shadow: 3px 2px 0px #c8c8c8;
 }
 .register.container h1,
 .login.container h1 {
   font-size: 30px;
   font-weight: 200;
   margin-bottom: 20px;
-}
-.register.container input[type='text'],
-.register.container input[type='email'],
-.register.container input[type='password'],
-.login.container input[type='text'],
-.login.container input[type='email'],
-.login.container input[type='password'] {
-  display: block;
-  width: 93%;
-  border-radius: 4px;
-  padding: 10px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #a7a7a7;
 }
 .register.container p,
 .login.container p {
@@ -136,4 +148,44 @@ nav.navbar.container {
   font-size: 12px;
   line-height: 17px;
   margin-top: 20px;
+}
+
+/* Todos */
+.container.todos h1 {
+  font-size: 30px;
+  font-weight: 200;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.todos.container input[type='submit'] {
+  display: none;
+}
+.todos .add-todo.two-column-wrapper,
+.todos .todo-item.two-column-wrapper {
+  display: grid;
+  grid-template-columns: 3% 97%;
+}
+.todos .add-todo.two-column-wrapper .col1 {
+  font-size: 35px;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  color: #5098a7;
+}
+.todos .add-todo-text {
+  border: none;
+}
+.todos-list .todo-item .col2 {
+  padding: 10px 0;
+  border-bottom: 1px solid #cecece;
+}
+.todos-list .todo-item input[type='text'] {
+  background: none;
+  padding: 5px 16px;
+}
+
+/* Profile */
+.profile .two-column-wrapper {
+  display: grid;
+  grid-template-columns: 20% 80%;
 }

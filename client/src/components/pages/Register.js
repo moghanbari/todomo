@@ -5,7 +5,7 @@ import { setAlert } from '../../redux/actions/alert'
 import { register } from '../../redux/actions/auth'
 import PropTypes from 'prop-types'
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated, alert }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +21,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (password !== password2) {
+    if (alert.length > 0) {
+      return
+    } else if (password !== password2) {
       setAlert('Passwords do not match', 'danger')
     } else {
       register({ name, email, password })
@@ -38,6 +40,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <h1>Sign Up</h1>
       <form onSubmit={(e) => onSubmit(e)}>
         <input
+          className="input-field"
           type="text"
           placeholder="Name"
           name="name"
@@ -47,6 +50,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         />
 
         <input
+          className="input-field"
           type="email"
           placeholder="Email Address"
           name="email"
@@ -56,6 +60,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         />
 
         <input
+          className="input-field"
           type="password"
           placeholder="Password"
           name="password"
@@ -65,6 +70,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
         />
         <input
+          className="input-field"
           type="password"
           placeholder="Confirm Password"
           name="password2"
@@ -90,10 +96,12 @@ Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  alert: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  alert: state.alert,
 })
 
 export default connect(mapStateToProps, { setAlert, register })(Register)

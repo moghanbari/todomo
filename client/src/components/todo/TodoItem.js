@@ -20,8 +20,9 @@ function TodoItem({ todo: { _id, text, completed }, updateTodo, removeTodo }) {
   }
 
   return (
-    <div>
-      <p className={`todo-item ${completed ? 'completed' : ''}`}>
+    <div className="todo-item two-column-wrapper">
+      <div className="col1"> </div>
+      <div className={`col2 ${completed ? 'completed' : ''}`}>
         <input
           type="checkbox"
           name="markAsComplete"
@@ -41,7 +42,7 @@ function TodoItem({ todo: { _id, text, completed }, updateTodo, removeTodo }) {
           }}
         />
         <button onClick={() => removeTodo(_id)}>X</button>
-      </p>
+      </div>
     </div>
   )
 }

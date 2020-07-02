@@ -74,14 +74,49 @@ router.post(
 
 /**
  * @route   PUT api/user
- * @desc    Update a user
+ * @desc    Update a user info except password
  * @access  Private
  */
 router.put(
   '/',
+  [auth, check('name', 'Name is required').not().isEmpty()],
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+
+    try {
+      const user = await User.findById(req.user.id)
+      if (!user) res.status(404).json({ msg: 'User not found' })
+
+      const { name } = req.body
+
+      const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        {
+          name,
+        },
+        { new: true }
+      ).select('-password')
+
+      res.json(updatedUser)
+    } catch (err) {
+      console.log(err.message)
+      res.status(500).send('Server Error')
+    }
+  }
+)
+
+/**
+ * @route   PUT api/user
+ * @desc    Update a user password
+ * @access  Private
+ */
+router.put(
+  '/password',
   [
     auth,
-    check('name', 'Name is required').not().isEmpty(),
     check(
       'password',
       'Please enter a password with 6 or more characters'
@@ -97,7 +132,7 @@ router.put(
       const user = await User.findById(req.user.id)
       if (!user) res.status(404).json({ msg: 'User not found' })
 
-      const { name, password } = req.body
+      const { password } = req.body
 
       // Encrypt password
       const salt = await bcrypt.genSalt(10)
@@ -109,7 +144,6 @@ router.put(
       const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
         {
-          name,
           hashedPassword,
         },
         { new: true }
