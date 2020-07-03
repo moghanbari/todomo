@@ -11,15 +11,17 @@ function Todos({ getTodos, todo: { todos, loading } }) {
   }, [getTodos])
 
   return (
-    <div className="todos container mt-100">
-      <h1>Todos</h1>
-      <AddTodo />
-      <div className="todos-list">
-        {todos.map((todo) => (
-          <TodoItem key={todo._id} todo={todo} />
-        ))}
-      </div>
-    </div>
+    <main>
+      <section className="todos container mt-100">
+        <h1 className="header-h1 mb-40">Todos</h1>
+        <AddTodo />
+        <div className="todos-list">
+          {todos.map((todo) => (
+            <TodoItem key={todo._id} todo={todo} />
+          ))}
+        </div>
+      </section>
+    </main>
   )
 }
 

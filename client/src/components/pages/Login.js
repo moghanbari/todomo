@@ -31,33 +31,35 @@ const Login = ({ login, isAuthenticated, alert }) => {
   }
 
   return (
-    <section className="login container">
-      <h1>Login</h1>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <input
-          className="input-field"
-          type="email"
-          placeholder="Email Address"
-          name="email"
-          value={email}
-          required
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          className="input-field"
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={password}
-          required
-          onChange={(e) => onChange(e)}
-        />
-        <input type="submit" className="button login" value="Login" />
-      </form>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-    </section>
+    <main>
+      <section className="login container">
+        <h1>Login</h1>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <input
+            className="input-field"
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            value={email}
+            required
+            onChange={(e) => onChange(e)}
+          />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={password}
+            required
+            onChange={(e) => onChange(e)}
+          />
+          <input type="submit" className="button login" value="Login" />
+        </form>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </section>
+    </main>
   )
 }
 

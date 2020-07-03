@@ -42,7 +42,9 @@ export const updateUser = (name) => async (dispatch) => {
   }
 }
 
-export const updatePassword = (password) => async (dispatch) => {
+export const updatePassword = (newPassword, repeatNewPassword) => async (
+  dispatch
+) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token)
   }
@@ -53,9 +55,13 @@ export const updatePassword = (password) => async (dispatch) => {
     },
   }
 
-  const body = JSON.stringify({ password })
+  const body = JSON.stringify({ password: newPassword })
 
   try {
+    if (newPassword !== repeatNewPassword) {
+      return dispatch(setAlert('Password fields are not the same', 'danger'))
+    }
+
     const res = await axios.put('/api/user/password', body, config)
 
     dispatch({

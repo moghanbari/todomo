@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { updateUser, updatePassword } from '../../redux/actions/user'
 
-function Profile({ updateUser, updatePassword, user }) {
+function Profile({ updateUser, updatePassword, user, alert }) {
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
@@ -19,7 +19,7 @@ function Profile({ updateUser, updatePassword, user }) {
   const handleSubmitUpdateProfileForm = (e) => {
     e.preventDefault()
 
-    if (name) {
+    if (alert.length === 0) {
       updateUser(name)
     }
   }
@@ -27,12 +27,14 @@ function Profile({ updateUser, updatePassword, user }) {
   const handleSubmitUpdatePasswordForm = (e) => {
     e.preventDefault()
 
-    updatePassword(newPassword)
+    if (alert.length === 0) {
+      updatePassword(newPassword, repeatNewPassword)
+    }
   }
 
   return (
-    <div className="profile container mt-100">
-      <h1>Profile</h1>
+    <main className="profile container mt-100">
+      <h1 className="header-h1 mb-40">Profile</h1>
       <form onSubmit={handleSubmitUpdateProfileForm}>
         <div className="two-column-wrapper">
           <div className="col1">
@@ -64,8 +66,10 @@ function Profile({ updateUser, updatePassword, user }) {
         </div>
         <input className="button" type="submit" value="Update" />
       </form>
-      <form onSubmit={handleSubmitUpdatePasswordForm}>
-        <p>If you wish to change your password just type your new one here:</p>
+      <form className="mt-50" onSubmit={handleSubmitUpdatePasswordForm}>
+        <p className="mb-40">
+          If you wish to change your password just type your new one here:
+        </p>
         <div className="two-column-wrapper">
           <div className="col1">
             <label htmlFor="password">New Password:</label>
@@ -98,7 +102,7 @@ function Profile({ updateUser, updatePassword, user }) {
         </div>
         <input className="button" type="submit" value="Update Password" />
       </form>
-    </div>
+    </main>
   )
 }
 
@@ -106,10 +110,12 @@ Profile.propTypes = {
   updateUser: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  alert: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  alert: state.alert,
 })
 
 export default connect(mapStateToProps, {

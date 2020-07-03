@@ -26,6 +26,7 @@ function TodoItem({ todo: { _id, text, completed }, updateTodo, removeTodo }) {
         <input
           type="checkbox"
           name="markAsComplete"
+          className="complete-todo"
           checked={completed === true ? 'checked' : ''}
           onChange={(e) =>
             e.target.checked
@@ -35,13 +36,20 @@ function TodoItem({ todo: { _id, text, completed }, updateTodo, removeTodo }) {
         />
         <input
           type="text"
+          className="todo-text"
           value={todoText}
           onChange={(e) => {
             setTodoText(e.target.value)
             updateAfterFinishTyping(e.target.value)
           }}
         />
-        <button onClick={() => removeTodo(_id)}>X</button>
+        <span
+          class="material-icons float-right icon-button"
+          onClick={() => removeTodo(_id)}
+          title="delete"
+        >
+          delete_forever
+        </span>
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ import Register from '../pages/Register'
 import Todos from '../pages/Todos'
 import Profile from '../pages/Profile'
 import Alert from '../layouts/Alert'
+import NotFound from '../layouts/NotFound'
 
 const Routes = () => (
   <>
@@ -15,6 +16,7 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <PrivateRoute exact path="/todos" component={Todos} />
       <PrivateRoute exact path="/profile" component={Profile} />
+      <Route component={NotFound} />
     </Switch>
   </>
 )

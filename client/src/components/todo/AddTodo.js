@@ -21,7 +21,7 @@ function AddTodo({ addTodo }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="add-todo two-column-wrapper">
+      <div className="add-todo two-column-wrapper mb-20">
         <div className="col1">
           <span className="plus">+</span>
         </div>

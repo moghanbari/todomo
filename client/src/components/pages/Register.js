@@ -36,59 +36,61 @@ const Register = ({ setAlert, register, isAuthenticated, alert }) => {
   }
 
   return (
-    <section className="register container">
-      <h1>Sign Up</h1>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <input
-          className="input-field"
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={name}
-          required
-          onChange={(e) => onChange(e)}
-        />
+    <main>
+      <section className="register container">
+        <h1>Sign Up</h1>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={name}
+            required
+            onChange={(e) => onChange(e)}
+          />
 
-        <input
-          className="input-field"
-          type="email"
-          placeholder="Email Address"
-          name="email"
-          value={email}
-          required
-          onChange={(e) => onChange(e)}
-        />
+          <input
+            className="input-field"
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            value={email}
+            required
+            onChange={(e) => onChange(e)}
+          />
 
-        <input
-          className="input-field"
-          type="password"
-          placeholder="Password"
-          name="password"
-          minLength="6"
-          value={password}
-          required
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          className="input-field"
-          type="password"
-          placeholder="Confirm Password"
-          name="password2"
-          minLength="6"
-          value={password2}
-          required
-          onChange={(e) => onChange(e)}
-        />
-        <input type="submit" className="button register" value="Register" />
-        <p className="license-agreement">
-          By signing up you accept our license agreement. You can find it here.
-          Please fully read it before signing up.
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Password"
+            name="password"
+            minLength="6"
+            value={password}
+            required
+            onChange={(e) => onChange(e)}
+          />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Confirm Password"
+            name="password2"
+            minLength="6"
+            value={password2}
+            required
+            onChange={(e) => onChange(e)}
+          />
+          <input type="submit" className="button register" value="Register" />
+          <p className="license-agreement">
+            By signing up you accept our license agreement. You can find it
+            here. Please fully read it before signing up.
+          </p>
+        </form>
+        <p>
+          Already have an account? <Link to="/login">Sign In</Link>
         </p>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Sign In</Link>
-      </p>
-    </section>
+      </section>
+    </main>
   )
 }
 
