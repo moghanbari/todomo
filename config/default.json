@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://todomous:x5ijXSfafVKoRAn0@todomocluster-xducj.gcp.mongodb.net/todomo?retryWrites=true&w=majority",
-  "JWTSecret": "6eM9U42eprQZWZ5lYmVjMe4UD5yOSwPUndGVLDr6cbk87RS7BoVk0Ydd"
+  "mongoURI": "",
+  "JWTSecret": ""
 }
