@@ -5,7 +5,6 @@ const todoRoute = require('./routes/api/todo')
 const connectDB = require('./config/db')
 const path = require('path')
 
-const port = process.env.PORT || 5000
 const app = express()
 
 // Middleware

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
-const config = require('config')
+// const config = require('config')
 
-const jwtSecret = config.get('JWTSecret')
+const jwtSecret = process.env.JWTSecret
 
 const authMiddleware = (request, response, next) => {
   const token = request.header('x-auth-token')

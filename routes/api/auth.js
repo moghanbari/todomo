@@ -3,11 +3,11 @@ const router = express.Router()
 const auth = require('../../middleware/auth')
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
-const config = require('config')
+// const config = require('config')
 const jwt = require('jsonwebtoken')
 
 const User = require('../../models/User')
-const jwtSecret = config.get('JWTSecret')
+const jwtSecret = process.env.JWTSecret
 
 /**
  * @route   GET /api/auth
