@@ -1,12 +1,12 @@
-const config = require('./config')
 const express = require('express')
 const authRoute = require('./routes/api/auth')
 const userRoute = require('./routes/api/user')
 const todoRoute = require('./routes/api/todo')
 const connectDB = require('./config/db')
 const path = require('path')
+const config = require('./config')
 
-const { mongoURI, PORT } = config
+const { MONGO_URI, PORT } = config
 
 const app = express()
 
@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json({ extended: false }))
 
 // Connect to DB
-connectDB(mongoURI)
+connectDB(MONGO_URI)
 
 // Define Routes
 app.use('/api/auth', authRoute)

@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-// const config = require('config')
 const config = require('../../config')
 const { check, validationResult } = require('express-validator')
 
@@ -10,8 +9,7 @@ const auth = require('../../middleware/auth')
 
 const User = require('../../models/User')
 
-const { JWTSecret } = config
-// const JWTSecret = process.env.JWTSecret
+const { JWT_SECRET } = config
 
 /**
  * @route   POST api/user
@@ -56,7 +54,7 @@ router.post(
       const savedUser = await newUser.save()
       if (!savedUser) throw Error('Something went wrong saving the user')
 
-      const token = jwt.sign({ id: savedUser.id }, JWTSecret, {
+      const token = jwt.sign({ id: savedUser.id }, JWT_SECRET, {
         expiresIn: 360000,
       })
 

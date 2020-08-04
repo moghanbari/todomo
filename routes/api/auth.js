@@ -3,13 +3,11 @@ const router = express.Router()
 const auth = require('../../middleware/auth')
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
-// const config = require('config')
 const config = require('../../config')
 const jwt = require('jsonwebtoken')
 
 const User = require('../../models/User')
-const { JWTSecret } = config
-// const jwtSecret = process.env.JWTSecret
+const { JWT_SECRET } = config
 
 /**
  * @route   GET /api/auth
@@ -53,7 +51,7 @@ router.post(
       const isMatch = await bcrypt.compare(password, user.password)
       if (!isMatch) throw Error('Invalid credentials')
 
-      const token = jwt.sign({ id: user.id }, JWTSecret, { expiresIn: 3600 })
+      const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: 3600 })
       if (!token) throw Error('Couldnt sign the token')
 
       response.json({

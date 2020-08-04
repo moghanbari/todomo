@@ -5,6 +5,6 @@ dotenv.config({ path: path.join(__dirname, '.env') })
 
 module.exports = {
   PORT: process.env.PORT,
-  mongoURI: process.env.MONGO_URI,
-  JWTSecret: process.env.JWT_SECRET,
+  MONGO_URI: process.env.MONGO_URI,
+  JWT_SECRET: process.env.JWT_SECRET,
 }
