@@ -3,13 +3,15 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 // const config = require('config')
+const config = require('../../config')
 const { check, validationResult } = require('express-validator')
 
 const auth = require('../../middleware/auth')
 
 const User = require('../../models/User')
 
-const JWTSecret = process.env.JWTSecret
+const { JWTSecret } = config
+// const JWTSecret = process.env.JWTSecret
 
 /**
  * @route   POST api/user

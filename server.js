@@ -1,3 +1,4 @@
+const config = require('./config')
 const express = require('express')
 const authRoute = require('./routes/api/auth')
 const userRoute = require('./routes/api/user')
@@ -5,13 +6,15 @@ const todoRoute = require('./routes/api/todo')
 const connectDB = require('./config/db')
 const path = require('path')
 
+const { mongoURI, PORT } = config
+
 const app = express()
 
 // Middleware
 app.use(express.json({ extended: false }))
 
 // Connect to DB
-connectDB()
+connectDB(mongoURI)
 
 // Define Routes
 app.use('/api/auth', authRoute)
@@ -28,6 +31,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const PORT = process.env.PORT || 5000
+const port = PORT || 5000
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+app.listen(port, () => console.log(`Server is running on port ${port}`))
