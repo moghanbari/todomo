@@ -76,7 +76,7 @@ router.post(
 
 /**
  * @route   PUT api/user
- * @desc    Update a user info except password
+ * @desc    Update user info except password
  * @access  Private
  */
 router.put(
@@ -111,7 +111,7 @@ router.put(
 )
 
 /**
- * @route   PUT api/user
+ * @route   PUT api/user/password
  * @desc    Update a user password
  * @access  Private
  */
