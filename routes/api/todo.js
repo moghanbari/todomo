@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator')
 const auth = require('../../middleware/auth')
 const checkObjectId = require('../../middleware/checkObjectId')
 
-const Todo = require('../../models/Todos')
+const Todo = require('../../models/Todo')
 const User = require('../../models/User')
 
 /**
