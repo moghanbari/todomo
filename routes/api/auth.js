@@ -27,7 +27,7 @@ router.get('/', auth, async (request, response) => {
 
 /**
  * @route   POST api/auth/login
- * @desc    Authenticate user & get token
+ * @desc    Authenticate user & get token and user info
  * @access  Public
  */
 router.post(
