@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const authRoute = require('./routes/api/auth')
 const userRoute = require('./routes/api/user')
 const todoRoute = require('./routes/api/todo')
@@ -12,6 +13,7 @@ const app = express()
 
 // Middleware
 app.use(express.json({ extended: false }))
+app.use(cors())
 
 // Connect to DB
 connectDB(MONGO_URI)

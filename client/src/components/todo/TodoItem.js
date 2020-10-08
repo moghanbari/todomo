@@ -44,7 +44,7 @@ function TodoItem({ todo: { _id, text, completed }, updateTodo, removeTodo }) {
           }}
         />
         <span
-          class="material-icons float-right icon-button"
+          className="material-icons float-right icon-button"
           onClick={() => removeTodo(_id)}
           title="delete"
         >
