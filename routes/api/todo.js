@@ -71,7 +71,7 @@ router.post(
 
 /**
  * @route   DELETE api/todo/:id
- * @desc    Delete a post
+ * @desc    Delete a todo
  * @access  Private
  */
 router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
