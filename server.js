@@ -15,10 +15,10 @@ const app = express()
 app.use(express.json({ extended: false }))
 app.use(cors())
 
-// Connect to DB
+// Database
 connectDB(MONGO_URI)
 
-// Define Routes
+// Routes
 app.use('/api/auth', authRoute)
 app.use('/api/user', userRoute)
 app.use('/api/todo', todoRoute)
