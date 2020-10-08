@@ -63,7 +63,7 @@ router.post(
         },
       })
     } catch (error) {
-      response.status(400).json({ errors: [{ msg: error.message }] })
+      response.status(401).json({ errors: [{ msg: error.message }] })
     }
   }
 )
