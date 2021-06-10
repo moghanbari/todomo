@@ -1,4 +1,4 @@
-# todomo
+# todomo (Updated 2021)
 A todo application with registration and authentication ability.
 
 ### Technologies:

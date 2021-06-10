@@ -23,7 +23,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Landing} />
+          <Route exact path='/' component={Landing} />
           <Routes />
         </Switch>
         <Footer />
