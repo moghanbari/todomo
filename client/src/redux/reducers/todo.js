@@ -6,15 +6,15 @@ import {
   UPDATE_TODO,
   UPDATE_TODO_FAIL,
   REMOVE_TODO,
-  REMOVE_TODO_FAIL,
+  REMOVE_TODO_FAIL
 } from '../actions/types'
 
 const initialState = {
   todos: [],
-  loading: true,
+  loading: true
 }
 
-export default function (state = initialState, action) {
+const todo = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
@@ -22,27 +22,25 @@ export default function (state = initialState, action) {
       return {
         ...state,
         todos: payload,
-        loading: false,
+        loading: false
       }
     case ADD_TODO:
       state.todos.unshift(payload)
       return {
         ...state,
-        loading: false,
+        loading: false
       }
     case UPDATE_TODO:
       return {
         ...state,
-        todos: state.todos.map((todo) =>
-          todo._id === payload._id ? payload : todo
-        ),
-        loading: false,
+        todos: state.todos.map((todo) => (todo._id === payload._id ? payload : todo)),
+        loading: false
       }
     case REMOVE_TODO:
       return {
         ...state,
         todos: state.todos.filter((todo) => todo._id !== payload.id),
-        loading: false,
+        loading: false
       }
     case GET_TODOS_FAIL:
     case ADD_TODO_FAIL:
@@ -50,9 +48,11 @@ export default function (state = initialState, action) {
     case REMOVE_TODO_FAIL:
       return {
         ...state,
-        loading: false,
+        loading: false
       }
     default:
       return state
   }
 }
+
+export default todo

@@ -2,15 +2,15 @@ import {
   UPDATE_USER,
   UPDATE_USER_FAIL,
   UPDATE_USER_PASSWORD,
-  UPDATE_USER_PASSWORD_FAIL,
+  UPDATE_USER_PASSWORD_FAIL
 } from '../actions/types'
 
 const initialState = {
   user: [],
-  loading: true,
+  loading: true
 }
 
-export default function (state = initialState, action) {
+const user = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
@@ -19,15 +19,17 @@ export default function (state = initialState, action) {
       return {
         ...state,
         user: payload,
-        loading: false,
+        loading: false
       }
     case UPDATE_USER_FAIL:
     case UPDATE_USER_PASSWORD_FAIL:
       return {
         ...state,
-        loading: false,
+        loading: false
       }
     default:
       return state
   }
 }
+
+export default user

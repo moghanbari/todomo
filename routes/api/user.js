@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
+
+const config = require('../../config')
+
+const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const config = require('../../config')
-const { check, validationResult } = require('express-validator')
 
 const auth = require('../../middleware/auth')
 
@@ -74,7 +76,7 @@ router.post(
 
 /**
  * @route   PUT api/user
- * @desc    Update a user info except password
+ * @desc    Update user info except password
  * @access  Private
  */
 router.put(
@@ -109,7 +111,7 @@ router.put(
 )
 
 /**
- * @route   PUT api/user
+ * @route   PUT api/user/password
  * @desc    Update a user password
  * @access  Private
  */
